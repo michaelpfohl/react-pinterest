@@ -5,9 +5,9 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
   Button,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class BoardCard extends Component {
   render() {
@@ -26,7 +26,9 @@ class BoardCard extends Component {
             <CardText>
                 {board.description}
             </CardText>
-            <Button>Button</Button>
+            <Button className="btn-info">
+              <Link to={`/boards/${board.firebaseKey}`}>View Pins</Link>
+            </Button>
           </CardBody>
         </Card>
       </div>

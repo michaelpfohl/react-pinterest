@@ -35,17 +35,17 @@ class Routes extends Component {
           />
           <Route
             exact
-            path="/singleboard"
-            component={() => <SingleBoard authed={authed} />}
+            path="/boards/:id"
+            component={(props) => <SingleBoard authed={authed} {...props} />}
           />
           <Route
             exact
-            path="/boardform"
+            path="/board-form"
             component={() => <BoardForm authed={authed} />}
           />
           <Route
             exact
-            path="/pinform"
+            path="/pin-form"
             component={() => <PinForm authed={authed} />}
           />
           <Route component={NotFound} />
