@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
 import firebase from 'firebase/app';
+import { BrowserRouter as Router } from 'react-router-dom';
 import fbConnection from '../helpers/data/connection';
 
-import Auth from '../components/Auth';
-import BoardContainer from '../components/BoardContainer';
 import Navbar from '../components/Navbar';
+import Routes from '../helpers/Routes';
 
 fbConnection();
 
@@ -30,20 +30,13 @@ class App extends React.Component {
 
   render() {
     const { authed } = this.state;
-    const loadComponent = () => {
-      let component = '';
-      if (authed) {
-        component = <BoardContainer />;
-      } else {
-        component = <Auth />;
-      }
-      return component;
-    };
 
     return (
       <div className="App">
-        <Navbar authed={authed}/>
-        {loadComponent()}
+        <Router>
+          <Navbar authed={authed}/>
+          <Routes authed={authed}/>
+        </Router>
       </div>
     );
   }

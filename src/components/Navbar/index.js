@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   state = {};
@@ -17,7 +18,7 @@ class Navbar extends Component {
       <div className="MyNavbar">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <span className="navbar-brand" href="#">
-            Pinterest
+            <Link to='/'>Pinterest</Link>
           </span>
           <button
             className="navbar-toggler"
@@ -31,7 +32,14 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li className="nav-item nav-link">
+                <Link to='/boards'>Boards</Link>
+              </li>
+              <li className="nav-item nav-link">
+                <Link to='/pins'>Pins</Link>
+              </li>
+            </ul>
             <div className="form-inline my-2 my-lg-0">
               {authed && (
                 <button
