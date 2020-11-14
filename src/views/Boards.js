@@ -1,9 +1,10 @@
 import React from 'react';
+import BoardContainer from '../components/BoardContainer';
 
 export default function Boards() {
   return (
     <div>
-      <h1>Boards</h1>
+      <BoardContainer />
     </div>
   );
 }

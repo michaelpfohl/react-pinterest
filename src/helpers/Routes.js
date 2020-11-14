@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router, Route, Switch, Link,
+  Route, Switch,
 } from 'react-router-dom';
 
 import Home from '../views/Home';
@@ -17,7 +17,6 @@ class Routes extends Component {
   render() {
     const { authed } = this.props;
     return (
-      <Router>
         <Switch>
           <Route
             exact
@@ -51,7 +50,6 @@ class Routes extends Component {
           />
           <Route component={NotFound} />
         </Switch>
-      </Router>
     );
   }
 }

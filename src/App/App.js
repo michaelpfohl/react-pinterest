@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import firebase from 'firebase/app';
+import { BrowserRouter as Router } from 'react-router-dom';
 import fbConnection from '../helpers/data/connection';
 
 import Navbar from '../components/Navbar';
@@ -32,8 +33,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Navbar authed={authed}/>
-        <Routes authed={authed}/>
+        <Router>
+          <Navbar authed={authed}/>
+          <Routes authed={authed}/>
+        </Router>
       </div>
     );
   }
