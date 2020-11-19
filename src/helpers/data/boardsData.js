@@ -1,44 +1,3 @@
-// import axios from 'axios';
-
-// const baseUrl = 'https://dinnterest-532dd.firebaseio.com/';
-
-// const getBoards = () => new Promise((resolve, reject) => {
-//   axios.get(`${baseUrl}/react-boards.json`).then((response) => {
-//     const boardData = response.data;
-//     const boards = [];
-//     if (boardData) {
-//       Object.keys(boardData).forEach((boardId) => {
-//         boards.push(boardData[boardId]);
-//       });
-//     }
-//     resolve(boards);
-//   }).catch((error) => reject(error));
-// });
-
-// const createBoard = (boardObj) => new Promise((resolve, reject) => {
-//   axios.post(`${baseUrl}/react-boards/${boardObj.firebaseKey}.json`, boardObj)
-//     .then((response) => {
-//       axios.patch(`${baseUrl}/react-boards/${response.data.name}.json`, { firebaseKey: response.data.name }).then((res) => {
-//         resolve(res);
-//       });
-//     }).catch((error) => reject(error));
-// });
-
-// const updateBoard = (boardObj) => new Promise((resolve, reject) => {
-//   axios.patch(`${baseUrl}/${boardObj.firebaseKey}.json`, boardObj).then((response) => {
-//     resolve(response);
-//   }).catch((error) => reject(error));
-// });
-
-// const getSingleBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
-//   axios.get(`${baseUrl}/react-boards/${boardFirebaseKey}.json`)
-//     .then((response) => resolve(response)).catch((error) => reject(error));
-// });
-
-// export default {
-//   getBoards, createBoard, updateBoard, getSingleBoard,
-// };
-
 import axios from 'axios';
 
 const baseUrl = 'https://dinnterest-532dd.firebaseio.com';
@@ -65,7 +24,6 @@ const searchBoards = (uid, searchTerm) => new Promise((resolve, reject) => {
 const createBoard = (boardObj) => new Promise((resolve, reject) => {
   axios.post(`${baseUrl}/react-boards.json`, boardObj)
     .then((response) => {
-      console.warn(response);
       axios.patch(`${baseUrl}/react-boards/${response.data.name}.json`, { firebaseKey: response.data.name }).then((res) => {
         resolve(res);
       });
@@ -78,6 +36,13 @@ const updateBoard = (boardObj) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
+const deleteBoard = (boardFirebasekey) => axios.delete(`${baseUrl}/react-boards/${boardFirebasekey}.json`);
+
 export default {
-  getAllUserBoards, getSingleBoard, searchBoards, updateBoard, createBoard,
+  getAllUserBoards,
+  getSingleBoard,
+  searchBoards,
+  updateBoard,
+  createBoard,
+  deleteBoard,
 };
