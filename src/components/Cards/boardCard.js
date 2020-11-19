@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 class BoardCard extends Component {
   render() {
-    const { board } = this.props;
+    const { board, removeBoard } = this.props;
     return (
       <div>
         <Card className='board-card'>
@@ -29,6 +29,7 @@ class BoardCard extends Component {
             <Button className="card-button">
               <Link to={`/boards/${board.firebaseKey}`} className="card-button-text">View Pins</Link>
             </Button>
+            <Button id={board.firebaseKey} onClick={(e) => removeBoard(e)}>Delete</Button>
           </CardBody>
         </Card>
       </div>

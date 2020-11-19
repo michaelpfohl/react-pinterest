@@ -16,7 +16,7 @@ const ModalExample = (props) => {
         {buttonLabel}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-  <ModalHeader toggle={toggle}>{title}</ModalHeader>
+        <ModalHeader toggle={toggle}>{title}</ModalHeader>
         <ModalBody>
           {props.children}
         </ModalBody>

@@ -56,9 +56,10 @@
 
 import React from 'react';
 import boardsData from '../helpers/data/boardsData';
+import authData from '../helpers/data/authData';
+
 import BoardsCard from '../components/Cards/boardCard';
 import Loader from '../components/Loader';
-import authData from '../helpers/data/authData';
 import AppModal from '../components/AppModal';
 import BoardForm from '../components/Forms/BoardForm';
 
@@ -91,10 +92,21 @@ export default class Boards extends React.Component {
     clearInterval(this.timer);
   }
 
+  removeBoard = (e) => {
+    const notRemovedBoards = this.state.boards.filter((board) => board.firebaseKey !== e.target.id);
+    this.setState({
+      boards: notRemovedBoards,
+    });
+    boardsData.deleteBoard(e.target.id)
+      .then(() => {
+        this.getBoards();
+      });
+  }
+
   render() {
     const { boards, loading } = this.state;
     const showBoards = () => (
-      boards.map((board) => <BoardsCard key={board.firebaseKey} board={board} />)
+      boards.map((board) => <BoardsCard key={board.firebaseKey} board={board} removeBoard={this.removeBoard}/>)
     );
     return (
       <>
@@ -103,7 +115,7 @@ export default class Boards extends React.Component {
         ) : (
           <>
           <AppModal title={'Create Board'} buttonLabel={'Create Board'}>
-            <BoardForm onUpdate={this.getBoards}/>
+            <BoardForm onUpdate={this.getBoards} />
           </AppModal>
           <div className='board-container d-flex flex-wrap justify-content-center'>
             {showBoards()}
