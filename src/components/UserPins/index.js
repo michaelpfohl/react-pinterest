@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import pinsData from '../../helpers/data/pinsData';
 import PinCard from '../Cards/pinCard';
+import authData from '../../helpers/data/authData';
 
-class PinContainer extends Component {
+class UserPins extends Component {
   state = { pins: [] };
 
   componentDidMount() {
-    this.loadData();
+    this.getUserPins();
   }
 
-  loadData = () => {
-    pinsData.getPins().then((response) => {
+  getUserPins = () => {
+    const user = authData.getUid();
+    pinsData.getAllPins().then((response) => {
+      const userPins = Object.values(response).filter((pin) => pin.userId === user);
       this.setState({
-        pins: response,
+        pins: userPins,
       });
     });
   }
@@ -28,4 +31,4 @@ class PinContainer extends Component {
   }
 }
 
-export default PinContainer;
+export default UserPins;
