@@ -41,11 +41,11 @@ class BoardForm extends Component {
     e.preventDefault();
     if (this.state.firebaseKey === '') {
       boardsData.createBoard(this.state).then(() => {
-        this.props.onUpdate();
+        this.props.onUpdate?.();
       });
     } else {
       boardsData.updateBoard(this.state).then(() => {
-        this.props.onUpdate(this.state.firebaseKey);
+        this.props.onUpdate?.(this.state.firebaseKey);
       });
     }
   };
