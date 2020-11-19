@@ -10,43 +10,49 @@ import SingleBoard from '../views/SingleBoard';
 import BoardForm from '../views/BoardForm';
 import PinForm from '../views/PinForm';
 import NotFound from '../views/NotFound';
+import SearchResults from '../views/SearchResults';
 
 class Routes extends Component {
   state = {};
 
   render() {
-    const { authed } = this.props;
+    const { user } = this.props;
     return (
         <Switch>
           <Route
             exact
             path="/"
-            component={() => <Home authed={authed} />}
+            component={() => <Home user={user} />}
           />
           <Route
             exact
             path="/boards"
-            component={() => <Boards authed={authed} />}
+            component={() => <Boards user={user} />}
           />
           <Route
             exact
             path="/pins"
-            component={() => <Pins authed={authed} />}
+            component={() => <Pins user={user} />}
           />
           <Route
             exact
             path="/boards/:id"
-            component={(props) => <SingleBoard authed={authed} {...props} />}
+            component={(props) => <SingleBoard user={user} {...props} />}
+          />
+          <Route
+            exact
+            path="/search/:term/:type"
+            component={(props) => <SearchResults {...props} />}
           />
           <Route
             exact
             path="/board-form"
-            component={() => <BoardForm authed={authed} />}
+            component={() => <BoardForm user={user} />}
           />
           <Route
             exact
             path="/pin-form"
-            component={() => <PinForm authed={authed} />}
+            component={() => <PinForm user={user} />}
           />
           <Route component={NotFound} />
         </Switch>

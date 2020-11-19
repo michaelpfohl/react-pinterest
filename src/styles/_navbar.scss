@@ -1,0 +1,27 @@
+$nav: #dcdcdc;
+$navAlt: #64a4dc;
+
+.nav-container {
+  -webkit-box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-logo {
+  color: $nav;
+  font-size: 1.25rem;
+  margin-left: 0.5rem;
+}
+
+.navbar-logo:hover {
+  color: $navAlt;
+}
+
+.navbar-options {
+  color: $navAlt;
+  margin: 0 1rem;
+  font-size: 1.05rem;
+}
+
+.navbar-options:hover {
+  color: $nav;
+}

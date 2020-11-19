@@ -1,18 +1,24 @@
 import axios from 'axios';
 
-const baseUrl = 'https://dinnterest-532dd.firebaseio.com/';
+const baseUrl = 'https://dinnterest-532dd.firebaseio.com';
 
-const getPins = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/react-pins.json`).then((response) => {
-    const pinData = response.data;
-    const pins = [];
-    if (pinData) {
-      Object.keys(pinData).forEach((pinId) => {
-        pins.push(pinData[pinId]);
-      });
-    }
-    resolve(pins);
+const getBoardPins = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/react-boards-pins.json?orderBy="boardId"&equalTo="${boardId}"`).then((response) => {
+    resolve(Object.values(response.data));
   }).catch((error) => reject(error));
 });
 
-export default { getPins };
+const getPin = (pinId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/react-pins/${pinId}.json`).then((response) => {
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
+const getAllPins = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/react-pins.json`).then((response) => {
+    console.warn(response.data);
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
+export default { getBoardPins, getPin, getAllPins };
