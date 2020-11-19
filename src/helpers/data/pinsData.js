@@ -16,7 +16,6 @@ const getPin = (pinId) => new Promise((resolve, reject) => {
 
 const getAllPins = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/react-pins.json`).then((response) => {
-    console.warn(response.data);
     resolve(response.data);
   }).catch((error) => reject(error));
 });

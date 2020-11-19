@@ -1,10 +1,10 @@
 import React from 'react';
-import PinContainer from '../components/PinContainer';
+import UserPins from '../components/UserPins';
 
 export default function Pins() {
   return (
     <div>
-      <PinContainer />
+      <UserPins />
     </div>
   );
 }
