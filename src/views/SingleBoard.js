@@ -62,6 +62,9 @@
 import React from 'react';
 import pinsData from '../helpers/data/pinsData';
 import boardsData from '../helpers/data/boardsData';
+
+import AppModal from '../components/AppModal';
+import BoardForm from '../components/Forms/BoardForm';
 import PinsCard from '../components/Cards/pinCard';
 
 export default class SingleBoard extends React.Component {
@@ -86,6 +89,14 @@ export default class SingleBoard extends React.Component {
       .then((resp) => (
         this.setState({ pins: resp })
       ));
+  }
+
+  getBoardInfo = (boardId) => {
+    boardsData.getSingleBoard(boardId).then((response) => {
+      this.setState({
+        board: response,
+      });
+    });
   }
 
   getPins = (boardId) => (
@@ -113,7 +124,10 @@ export default class SingleBoard extends React.Component {
     // 5. Render the pins on the DOM
     return (
       <div>
-        <h1>{board.name}</h1>
+        <AppModal title={'Update Board'} buttonLabel={'Update Board'} >
+          {Object.keys(board).length && <BoardForm board={board} onUpdate={this.getBoardInfo} />}
+        </AppModal>
+        <h1 className="mt-4">{board.name}</h1>
         <div className='d-flex flex-wrap container'>
           {renderPins()}
         </div>

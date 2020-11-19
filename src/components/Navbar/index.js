@@ -57,7 +57,7 @@ class Navbar extends Component {
         </nav>
       </div>
       {this.props.children}
-      <footer>This is the footer</footer>
+      <footer className="footer">© 2020 - Michael Pfohl</footer>
       </>
     );
   }
