@@ -5,7 +5,7 @@ class Loader extends Component {
 
   render() {
     return (
-      <div className="mt-5">
+      <div className="loader-container">
         <div className="spinner-grow text-success" role="status">
           <span className="sr-only">Loading...</span>
         </div>

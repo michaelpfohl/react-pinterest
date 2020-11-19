@@ -24,8 +24,11 @@ class UserPins extends Component {
     const { pins } = this.state;
     const renderPinsToDom = () => pins.map((pin) => <PinCard pin={pin} key={pin.firebaseKey}/>);
     return (
-      <div className="pin-container d-flex flex-wrap justify-content-center">
-        {renderPinsToDom()}
+      <div>
+        <h1 className="mt-4">Your Created Pins</h1>
+        <div className="pin-container d-flex flex-wrap justify-content-center">
+          {renderPinsToDom()}
+        </div>
       </div>
     );
   }
