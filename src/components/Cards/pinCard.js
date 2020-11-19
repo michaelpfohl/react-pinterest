@@ -7,8 +7,9 @@ import {
   CardTitle,
   Button,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-class BoardCard extends Component {
+class PinCard extends Component {
   render() {
     const { pin } = this.props;
     return (
@@ -21,11 +22,13 @@ class BoardCard extends Component {
             alt="Card image cap"
           />
           <CardBody>
-            <CardTitle tag="h5">{pin.name}</CardTitle>
-            <CardText>
+            <CardTitle tag="h5" className="card-title">{pin.name}</CardTitle>
+            <CardText className="card-description">
                 {pin.description}
             </CardText>
-            <Button>Button</Button>
+            <Button className="card-button">
+              <Link className="card-button-text" to="">Button</Link>
+            </Button>
           </CardBody>
         </Card>
       </div>
@@ -33,4 +36,4 @@ class BoardCard extends Component {
   }
 }
 
-export default BoardCard;
+export default PinCard;

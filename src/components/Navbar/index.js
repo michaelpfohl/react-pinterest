@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Link } from 'react-router-dom';
+import SearchInput from '../SearchInput';
 
 class Navbar extends Component {
   state = {};
@@ -12,13 +13,14 @@ class Navbar extends Component {
   }
 
   render() {
-    const { authed } = this.props;
+    const { user } = this.props;
 
     return (
-      <div className="MyNavbar">
+      <>
+      <div className="nav-container">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <span className="navbar-brand" href="#">
-            <Link to='/'>Pinterest</Link>
+            <Link to='/' className="navbar-logo">Pinterest</Link>
           </span>
           <button
             className="navbar-toggler"
@@ -34,14 +36,15 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item nav-link">
-                <Link to='/boards'>Boards</Link>
+                <Link to='/boards' className="navbar-options">Boards</Link>
               </li>
               <li className="nav-item nav-link">
-                <Link to='/pins'>Pins</Link>
+                <Link to='/pins' className="navbar-options">Pins</Link>
               </li>
             </ul>
+            <SearchInput />
             <div className="form-inline my-2 my-lg-0">
-              {authed && (
+              {user && (
                 <button
                   className="nav-link btn btn-danger"
                   onClick={this.logMeOut}
@@ -53,6 +56,9 @@ class Navbar extends Component {
           </div>
         </nav>
       </div>
+      {this.props.children}
+      <footer>This is the footer</footer>
+      </>
     );
   }
 }

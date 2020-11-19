@@ -1,4 +1,39 @@
 .board-card {
-    margin: 1rem;
-    width: 300px;
+  margin: 2rem;
+  width: 300px;
+  background: #dcdcdc;
+  transition: all 0.25s ease-in-out;
+  -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.25);
+}
+
+.board-card:hover {
+  transform: scale(1.02);
+}
+
+.card-title {
+  text-transform: uppercase;
+}
+
+.card-description {
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.card-button {
+  background: #64a4dc;
+  border: none;
+}
+
+.card-button:hover {
+  background: #fc4444;
+  border: #64a4dc;
+}
+
+.card-button-text {
+  color: #dcdcdc;
+}
+
+.card-button-text:hover {
+  color: #64a4dc;
 }

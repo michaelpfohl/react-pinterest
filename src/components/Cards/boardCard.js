@@ -22,12 +22,12 @@ class BoardCard extends Component {
             alt="Card image cap"
           />
           <CardBody>
-            <CardTitle tag="h5">{board.name}</CardTitle>
-            <CardText>
+            <CardTitle tag="h5" className="card-title">{board.name}</CardTitle>
+            <CardText className="card-description">
                 {board.description}
             </CardText>
-            <Button className="btn-info">
-              <Link to={`/boards/${board.firebaseKey}`}>View Pins</Link>
+            <Button className="card-button">
+              <Link to={`/boards/${board.firebaseKey}`} className="card-button-text">View Pins</Link>
             </Button>
           </CardBody>
         </Card>
