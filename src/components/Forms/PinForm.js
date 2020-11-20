@@ -98,9 +98,9 @@ class PinForm extends Component {
             name="private"
             value={this.state.private}
             onChange={this.handleChange}
-            placeholder="Enter an Image URL or Upload a File"
             required
           >
+            <option value="" selected disabled hidden>Choose here</option>
             <option className="dropdown-item">
               Public
             </option>

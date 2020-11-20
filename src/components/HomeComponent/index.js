@@ -21,7 +21,7 @@ class Home extends Component {
   render() {
     const { pins } = this.state;
     const showPins = () => (
-      pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} />)
+      pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin}/>)
     );
     return (
       <div className="pin-container d-flex flex-wrap justify-content-center">
