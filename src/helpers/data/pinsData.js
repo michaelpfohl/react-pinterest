@@ -20,4 +20,25 @@ const getAllPins = () => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export default { getBoardPins, getPin, getAllPins };
+const createPin = (pinObj) => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/react-pins.json`, pinObj)
+    .then((response) => {
+      axios.patch(`${baseUrl}/react-pins/${response.data.name}.json`, { firebaseKey: response.data.name }).then((res) => {
+        resolve(res);
+      });
+    }).catch((error) => reject(error));
+});
+
+const updatePin = (pinObj) => new Promise((resolve, reject) => {
+  axios.patch(`${baseUrl}/react-pins/${pinObj.firebaseKey}.json`, pinObj).then((response) => {
+    resolve(response);
+  }).catch((error) => reject(error));
+});
+
+export default {
+  getBoardPins,
+  getPin,
+  getAllPins,
+  createPin,
+  updatePin,
+};
