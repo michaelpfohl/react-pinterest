@@ -1,71 +1,10 @@
-// import React, { Component } from 'react';
-// import boardsPinsData from '../helpers/data/boardsPinsData';
-// import PinCard from '../components/Cards/pinCard';
-// import BoardForm from '../components/Forms/BoardForm';
-// import boardsData from '../helpers/data/boardsData';
-// import AppModal from '../components/AppModal';
-
-// class SingleBoard extends Component {
-//   state = {
-//     pins: [],
-//     board: {},
-//   };
-
-//   // componentDidMount() {
-//   //   this.getBoardInfo(this.props.match.params.id);
-//   // }
-
-//   // getBoardInfo = (boardObj) => {
-//   //   boardsData.getSingleBoard(boardObj).then((response) => {
-//   //     this.setState({ board: response.data });
-//   //   });
-//   // };
-
-//   render() {
-//     const { pins, board } = this.state;
-//     const boardFirebaseKey = this.props.match.params.id;
-//     boardsPinsData.getBoardsPins(boardFirebaseKey).then((response) => {
-//       this.setState({
-//         pins: response,
-//       });
-//     });
-//     // this.getBoardInfo(this.props.match.params.id);
-
-//     console.warn(this.props);
-
-//     const renderPinsToDom = () => {
-//       let display = '';
-//       if (pins.length) {
-//         display = pins.map((pin) => <PinCard pin={pin} key={pin.firebaseKey} />);
-//       } else {
-//         display = <h1 className="mt-2">No Pins Yet!</h1>;
-//       }
-//       return display;
-//     };
-//     console.warn(this.state);
-//     return (
-//     <div>
-//       <AppModal title={'Update Board'} buttonLabel={'Update Board'}>
-//         <BoardForm />
-//       </AppModal>
-//     <h1>{board.name}</h1>
-//       <div className="pin-container d-flex flex-wrap justify-content-center">
-//           {renderPinsToDom()}
-//       </div>
-//     </div>
-//     );
-//   }
-// }
-
-// export default SingleBoard;
-
 import React from 'react';
 import pinsData from '../helpers/data/pinsData';
 import boardsData from '../helpers/data/boardsData';
 
 import AppModal from '../components/AppModal';
 import BoardForm from '../components/Forms/BoardForm';
-import PinsCard from '../components/Cards/pinCard';
+import PinCard from '../components/Cards/pinCard';
 
 export default class SingleBoard extends React.Component {
   state = {
@@ -112,12 +51,24 @@ export default class SingleBoard extends React.Component {
     })
   )
 
+  removePin = (e) => {
+    const notRemovedPins = this.state.pins.filter(
+      (pin) => pin.firebaseKey !== e.target.id,
+    );
+    this.setState({
+      pins: notRemovedPins,
+    });
+    pinsData.deletePin(e.target.id).then(() => {
+      this.getPins();
+    });
+  };
+
   render() {
     const { pins, board } = this.state;
     const renderPins = () => (
       // 4. map over the pins in state
       pins.map((pin) => (
-         <PinsCard key={pin.firebaseKey} pin={pin} />
+         <PinCard key={pin.firebaseKey} pin={pin} removePin={this.removePin}/>
       ))
     );
 
