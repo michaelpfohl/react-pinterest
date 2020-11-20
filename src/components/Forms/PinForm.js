@@ -63,7 +63,7 @@ class PinForm extends Component {
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
-            placeholder="Board Name"
+            placeholder="Pin Name"
             className="form-control form-control-lg m-1"
             required
           />
@@ -72,7 +72,7 @@ class PinForm extends Component {
             name="description"
             value={this.state.description}
             onChange={this.handleChange}
-            placeholder="Board Description"
+            placeholder="Pin Description"
             className="form-control form-control-lg m-1"
             required
           />
