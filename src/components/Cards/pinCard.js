@@ -27,7 +27,7 @@ class PinCard extends Component {
                 {pin.description}
             </CardText>
             <Button className="card-button">
-              <Link className="card-button-text" to="">Button</Link>
+              <Link className="card-button-text" to={`/pins/${pin.firebaseKey}`}>View Pin</Link>
             </Button>
             <Button id={pin.firebaseKey} onClick={(e) => removePin(e)}>Delete</Button>
           </CardBody>
