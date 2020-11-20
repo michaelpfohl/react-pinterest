@@ -5,10 +5,12 @@ import pinsData from '../helpers/data/pinsData';
 import AppModal from '../components/AppModal';
 import PinForm from '../components/Forms/PinForm';
 import PinCard from '../components/Cards/pinCard';
+import Loader from '../components/Loader';
 
 class Pins extends Component {
   state = {
     pins: [],
+    loading: true,
   };
 
   componentDidMount() {
@@ -23,9 +25,15 @@ class Pins extends Component {
       );
       this.setState({
         pins: userPins,
-      });
+      }, this.setLoading);
     });
   };
+
+  setLoading = () => {
+    this.timer = setInterval(() => {
+      this.setState({ loading: false });
+    }, 1000);
+  }
 
   removePin = (e) => {
     const notRemovedPins = this.state.pins.filter(
@@ -40,12 +48,16 @@ class Pins extends Component {
   };
 
   render() {
-    const { pins } = this.state;
+    const { pins, loading } = this.state;
     const showUserPins = () => (
       pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} removePin={this.removePin}/>)
     );
     return (
-      <div>
+      <>
+      { loading ? (
+          <Loader />
+      ) : (
+        <>
         <AppModal title={'Create Pin'} buttonLabel={'Create Pin'}>
           <PinForm onUpdate={this.getUserPins} />
         </AppModal>
@@ -55,7 +67,9 @@ class Pins extends Component {
             {showUserPins()}
           </div>
         </div>
-      </div>
+        </>
+      )}
+      </>
     );
   }
 }
