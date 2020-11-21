@@ -40,7 +40,7 @@ class SinglePin extends Component {
             <img alt={pin.name} src={pin.imageUrl} className="single-pin-image"/>
             <p>{pin.description}</p>
             { (user === pin.userId) && (
-              <div>
+              <div className="d-flex justify-content-around">
               <AppModal title={'Update Pin'} buttonLabel={'Update Pin'}>
                 {Object.keys(pin).length && <PinForm pin={pin} onUpdate={this.getPinInfo} />}
               </AppModal>
