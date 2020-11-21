@@ -39,6 +39,14 @@ const getBoardPins = (boardId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
+const createBoardPin = (userId, boardId, pinId) => {
+  axios.post(`${baseUrl}/react-boards-pins.json`, {
+    userId,
+    boardId,
+    pinId,
+  }).catch((error) => console.warn(error));
+};
+
 export default {
   getPin,
   getAllPins,
@@ -46,4 +54,5 @@ export default {
   updatePin,
   deletePin,
   getBoardPins,
+  createBoardPin,
 };
