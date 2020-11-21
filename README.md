@@ -14,6 +14,6 @@ In this application, a user can:
 - Pin a pin to a board
 - Search the name and descriptions of both pins and boards
 
-![Gif of Site](https://gph.is/g/aNVe3Dv)
+![Gif of Site](React-Pinterest.gif)
 
 ### Deployed Site - [![Netlify Status](https://api.netlify.com/api/v1/badges/0a0ecfae-b866-4ba6-b786-a164a5667080/deploy-status)](https://app.netlify.com/sites/react-pinterest-mp/deploys)
