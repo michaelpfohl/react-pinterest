@@ -4,6 +4,7 @@ import authData from '../helpers/data/authData';
 
 import AppModal from '../components/AppModal';
 import PinForm from '../components/Forms/PinForm';
+import BoardDropdown from '../components/BoardDropdown';
 
 class SinglePin extends Component {
   state = {
@@ -39,6 +40,7 @@ class SinglePin extends Component {
             <h1 className="single-pin-header">{pin.name}</h1>
             <img alt={pin.name} src={pin.imageUrl} className="single-pin-image"/>
             <p>{pin.description}</p>
+            <BoardDropdown pin={pin.firebaseKey}/>
             { (user === pin.userId) && (
               <div className="d-flex justify-content-around">
               <AppModal title={'Update Pin'} buttonLabel={'Update Pin'}>

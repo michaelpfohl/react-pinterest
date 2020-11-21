@@ -53,7 +53,7 @@ class BoardDropdown extends Component {
         onChange={this.handleChange}
         required
     >
-        <option value="" selected disabled hidden>Choose board</option>
+        <option value="" selected disabled hidden>Add Pin to Board</option>
         {Object.keys(boards).length && populateDropdown()}
     </select>
     <button className="btn form-button form-button-text mt-1">
