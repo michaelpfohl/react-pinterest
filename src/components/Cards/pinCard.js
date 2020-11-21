@@ -8,6 +8,8 @@ import {
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import AppModal from '../AppModal';
+import BoardDropdown from '../BoardDropdown';
 
 class PinCard extends Component {
   render() {
@@ -30,6 +32,9 @@ class PinCard extends Component {
               <Link className="card-button-text" to={`/pins/${pin.firebaseKey}`}>View Pin</Link>
             </Button>
             <Button id={pin.firebaseKey} onClick={(e) => removePin(e)}>Delete</Button>
+            <AppModal title={'Pin to Board'} buttonLabel={'Pin to Board'}>
+              <BoardDropdown pin={pin.firebaseKey}/>
+            </AppModal>
           </CardBody>
         </Card>
       </div>

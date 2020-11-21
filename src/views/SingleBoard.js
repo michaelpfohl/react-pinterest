@@ -79,7 +79,7 @@ export default class SingleBoard extends React.Component {
           {Object.keys(board).length && <BoardForm board={board} onUpdate={this.getBoardInfo} />}
         </AppModal>
         <h1 className="mt-4">{board.name}</h1>
-        <div className='d-flex flex-wrap container'>
+        <div className='d-flex justify-content-center flex-wrap container'>
           {renderPins()}
         </div>
       </div>
