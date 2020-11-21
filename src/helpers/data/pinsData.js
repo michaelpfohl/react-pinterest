@@ -47,6 +47,16 @@ const createBoardPin = (userId, boardId, pinId) => {
   }).catch((error) => console.warn(error));
 };
 
+const deleteBoardPin = (pinId) => {
+  axios.get(`${baseUrl}/react-boards-pins.json?orderBy="pinId"&equalTo="${pinId}"`)
+    .then((response) => {
+      const toBeDeleted = Object.keys(response.data);
+      toBeDeleted.forEach((join) => {
+        axios.delete(`${baseUrl}/react-boards-pins/${join}.json`);
+      });
+    });
+};
+
 export default {
   getPin,
   getAllPins,
@@ -55,4 +65,5 @@ export default {
   deletePin,
   getBoardPins,
   createBoardPin,
+  deleteBoardPin,
 };

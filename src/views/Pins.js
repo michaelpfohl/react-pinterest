@@ -45,6 +45,7 @@ class Pins extends Component {
     pinsData.deletePin(e.target.id).then(() => {
       this.getUserPins();
     });
+    pinsData.deleteBoardPin(e.target.id);
   };
 
   render() {

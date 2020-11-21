@@ -61,6 +61,7 @@ export default class SingleBoard extends React.Component {
     pinsData.deletePin(e.target.id).then(() => {
       this.getPins();
     });
+    pinsData.deleteBoardPin(e.target.id);
   };
 
   render() {
