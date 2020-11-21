@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BoardCard from '../components/Cards/boardCard';
 import PinCard from '../components/Cards/pinCard';
 import boardsData from '../helpers/data/boardsData';
+import pinsData from '../helpers/data/pinsData';
 import authData from '../helpers/data/authData';
 
 class SearchResults extends Component {
@@ -37,10 +38,12 @@ class SearchResults extends Component {
       });
     } else {
     // Make an API call that gets the pins with the search term .filter
-      this.setState({
-        // results
-        searchTerm,
-        searchType,
+      pinsData.searchPins(uid, searchTerm).then((results) => {
+        this.setState({
+          results,
+          searchTerm,
+          searchType,
+        });
       });
     }
   };

@@ -11,7 +11,7 @@ const getPin = (pinId) => new Promise((resolve, reject) => {
 
 const getAllPins = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/react-pins.json`).then((response) => {
-    resolve(response.data);
+    resolve(Object.values(response.data));
   }).catch((error) => reject(error));
 });
 
@@ -57,6 +57,15 @@ const deleteBoardPin = (pinId) => {
     });
 };
 
+// Search Pins
+const searchPins = (uid, searchTerm) => new Promise((resolve, reject) => {
+  getAllPins().then((response) => {
+    const filteredArray = response.filter((r) => r.userId === uid || r.private === false);
+    const searchResults = filteredArray.filter((r) => r.name.toLowerCase().includes(searchTerm) || r.description.toLowerCase().includes(searchTerm));
+    resolve(searchResults);
+  }).catch((error) => reject(error));
+});
+
 export default {
   getPin,
   getAllPins,
@@ -66,4 +75,5 @@ export default {
   getBoardPins,
   createBoardPin,
   deleteBoardPin,
+  searchPins,
 };
