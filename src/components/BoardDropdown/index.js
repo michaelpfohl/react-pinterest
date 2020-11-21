@@ -26,7 +26,6 @@ class BoardDropdown extends Component {
     const { board, userId } = this.state;
     const { pin } = this.props;
     e.preventDefault();
-    // submit object of boardId, pinId, and userId to react-boards-pins
     pinsData.createBoardPin(userId, board, pin);
   };
 
