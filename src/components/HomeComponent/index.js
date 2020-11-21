@@ -14,7 +14,7 @@ class Home extends Component {
   getPublicPins = () => {
     pinsData.getAllPins().then((response) => {
       if (response) {
-        const publicPins = Object.values(response).filter((pin) => pin.private === 'Public');
+        const publicPins = response.filter((pin) => pin.private === 'Public');
         this.setState({ pins: publicPins });
       }
     });
