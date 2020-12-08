@@ -16,4 +16,4 @@ In this application, a user can:
 
 ![Gif of Site](React-Pinterest.gif)
 
-### Deployed Site - [![Netlify Status](https://api.netlify.com/api/v1/badges/0a0ecfae-b866-4ba6-b786-a164a5667080/deploy-status)](https://app.netlify.com/sites/react-pinterest-mp/deploys)
+### [Deployed Site](https://react-pinterest-mp.netlify.app/) - [![Netlify Status](https://api.netlify.com/api/v1/badges/0a0ecfae-b866-4ba6-b786-a164a5667080/deploy-status)](https://app.netlify.com/sites/react-pinterest-mp/deploys)
